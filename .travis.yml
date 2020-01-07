@@ -51,20 +51,20 @@ deploy:
     name: "$TAG"
     skip_cleanup: true
     api_key:
-      secure: YL/x24KjYjgYXPcJWk3FV7FGxI79Mh6gBECQEcdlf3fkLEoKFVgzHBoUNWrFPzyR4tgLyWNAgcpD9Lkme1TRWTom7UPjXcwMNyLcLa+uec7ciSAnYD9ntLTpiCuPDD1u0LtRGclSi/EHQ+F8YVq+HZJpXTsJeAmOmihma3GVbGKSZr+BRum+0YZSG4w+o4TOlYzw/4bLWS52MogZcwpjd+hemBbgXLuGU2ziKv2vEKCZFbEeA16II4x1WLI4mutDdCeh7+3aLzGLwDa49NxtsVYNjyNFF75JhCTCNA55e2YMiLz9Uq69IXe/mi5F7xUaFfhIqqLNyKBnKeEOzu3dYnc+8n3LjnQ+00PmkF05nx9kBn3UfV1kwQGh6QbyDmTtBP07rtUMyI14aeQqHjxsaVRdMnwj9Q2DjXRr8UDqESZF0rmK3pHCXS2fBhIzLE8tLVW5Heiba2pQRFMHMZW+KBE97FzcFh7is90Ait3T8enfcd/PWFPYoBejDAdjwxwOkezh5N5ZkYquEfDYuWrFi6zRFCktsruaAcA+xGtTf9oilBBzUqu8Ie+YFWH5me83xakcblJWdaW/D2rLJAJH3m6LFm8lBqyUgDX5t/etob6CpDuYHu5D1J3XINOj/+aLAcadq6qlh70PMZS3zYffUu3JlzaD2amlSHIT8b5YXFc=
+      secure: Tep7IHLXl+GqDlfc5Zs6vleHxOrxovS1fAwhIZXh+Vm9hv7xp9537ET0IOEEx2Kcw3U9s+WeRF9nuyhz5LXPono1hDJyyG4JhDZG0ZqCBU5f+uJPjAVWkKW1wwY6J6ipfNztYdhnFnXno85AtgsH2YiVD1vVriJkgJmjkjHyhQKgTL1V24m0G9BZbBAxWdjWfpd6k2mceBlB4GwBz0XtltU7CyGrW6aQ8/kWy5UUA6Ye1knon9b/xT8OkMzFkyUJK2p8EOHkErW+3s4PbpxQA7TeQ5F8F6EsbvCb/Ff/Hep9FGVQ5dwF6+U5+Ck94Z0KCZ4SsOg2qgTUt4LB8su6QYXVBXKj1lMcjdqKhvQ0j3S+IQPBXxR1QqRtSgbps0Om9bQLrcAbqAWZqDjodBKHvJD8IWQeMvjp5zo47RNsKkt51fyyUw0zWQii+gMHEDbdl1t/IJDf6jPhLYR9TNbmve/B7khmRnXYVKgf4m+lhIMNgSpdgCWmNJyBrF60UI0WF6wR1BaiW389atG7CiV/TjZDNwI+Ol2fuJmrhjMfk7TJTBImcBDaF5AV/RIm0Po3B1IzvQKis027/CCX41PKcKD4p6wIATIQxTFMeyDb1wXRUTtOe3DJAqEopTKuUqkOHBY2Z2HDNak8NxnGxd3TEPs2/PtY+rPGyq9XWcRB4hA=
     file:
       - release/*.tar.gz
       - release/*.zip
     on:
-      repo: cdr/code-server
-      branch: master
+      repo: noproxy/code-server
+      branch: personal_publish
 
   - provider: script
     skip_cleanup: true
-    script: docker build -f ./scripts/ci.dockerfile -t codercom/code-server:"$TAG" -t codercom/code-server:v2 -t codercom/code-server . && docker push codercom/code-server:"$TAG" && docker push codercom/code-server:v2 && docker push codercom/code-server
+    script: docker build -f ./scripts/ci.dockerfile -t toxzcp/code-server:"$TAG" -t toxzcp/code-server:v2 -t toxzcp/code-server . && docker push toxzcp/code-server:"$TAG" && docker push toxzcp/code-server:v2 && docker push toxzcp/code-server
     on:
-      repo: cdr/code-server
-      branch: master
+      repo: noproxy/code-server
+      branch: personal_publish
       condition: -n "$PUSH_DOCKER"
 
 cache:
